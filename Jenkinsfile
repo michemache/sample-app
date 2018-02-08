@@ -8,12 +8,6 @@ pipeline {
 
 mvn package'''
         }
-        
-      }
-    }
-    stage('error') {
-      steps {
-        tool 'packer'
       }
     }
   }
