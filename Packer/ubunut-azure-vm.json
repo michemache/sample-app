@@ -43,9 +43,9 @@
     "type": "shell",
     "execute_command": "echo 'packer' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
     "scripts": [
-        "scripts/install_jdk8.sh",
-        "scripts/service_enable.sh",
-        "scripts/cleanup.sh"
+        "{{ user `packer_workspace_key`}}/Packer/scripts/install_jdk8.sh",
+        "{{ user `packer_workspace_key`}}/Packer/scripts/service_enable.sh",
+        "{{ user `packer_workspace_key`}}/Packer/scripts/cleanup.sh"
     ]
   }]
 }

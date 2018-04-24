@@ -21,9 +21,8 @@ pipeline {
       }
       steps {
         sh 'pwd'
-        sh 'cd Packer'
-        sh '${PACKER_HOME}/packer validate ubunut-azure-vm.json'
-        sh '${PACKER_HOME}/packer build ubunut-azure-vm.json'
+        sh '${PACKER_HOME}/packer validate Packer/ubunut-azure-vm.json'
+        sh '${PACKER_HOME}/packer build Packer/ubunut-azure-vm.json'
       }
     }
   }
