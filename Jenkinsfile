@@ -13,7 +13,7 @@ pipeline {
         PACKER_HOME = tool name: 'packer-1.1.3', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
         PACKER_SUBSCRIPTION_ID="fcc1ad01-b8a5-471c-812d-4a42ff3d6074"
         PACKER_CLIENT_ID="262d2df5-a043-458a-9d0d-27a734962cd9"
-        PACKER_CLIENT_SECRET=credentials('a6b564a6-b7bc-4beb-ba66-04657babda1c')
+        PACKER_CLIENT_SECRET=credentials('6cc34f5a-a9be-4d58-8c47-4d3efcca04c6')
         PACKER_LOCATION="westeurope"
         PACKER_TENANT_ID="787717a7-1bf4-4466-8e52-8ef7780c6c42"
         PACKER_OBJECT_ID="56e89fa0-e748-49f4-9ff0-0d8b9e3d4057"
