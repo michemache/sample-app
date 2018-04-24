@@ -5,7 +5,8 @@
     "packer_client_secret_key": "{{env `PACKER_CLIENT_SECRET`}}",
     "packer_location_key": "{{env `PACKER_LOCATION`}}",
     "packer_tenant_id_key": "{{env `PACKER_TENANT_ID`}}",
-    "packer_object_id_key": "{{env `PACKER_OBJECT_ID`}}"
+    "packer_object_id_key": "{{env `PACKER_OBJECT_ID`}}",
+    "packer_workspace_key": "{{env `PACKER_WORKSPACE`}}"
   },
   "builders": [{
     "type": "azure-arm",
@@ -30,7 +31,7 @@
   "provisioners": [
   {
     "type": "file",
-    "source": "../target/gs-spring-boot-0.1.0.jar",
+    "source": "{{ user `packer_workspace_key`}}/target/gs-spring-boot-0.1.0.jar",
     "destination": "/tmp/gs-spring-boot.jar"
   },
   {

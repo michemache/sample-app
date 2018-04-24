@@ -17,10 +17,10 @@ pipeline {
         PACKER_LOCATION="westeurope"
         PACKER_TENANT_ID="787717a7-1bf4-4466-8e52-8ef7780c6c42"
         PACKER_OBJECT_ID="56e89fa0-e748-49f4-9ff0-0d8b9e3d4057"
+        PACKER_WORKSPACE = pwd()
       }
       steps {
         sh 'pwd'
-        echo '${PACKER_HOME}'
         sh '${PACKER_HOME}/packer validate Packer/ubunut-azure-vm.json'
         sh '${PACKER_HOME}/packer build Packer/ubunut-azure-vm.json'
       }
