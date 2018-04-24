@@ -36,7 +36,7 @@
   },
   {
     "type": "file",
-    "source": "spring-boot.service",
+    "source": "{{ user `packer_workspace_key`}}/Packer/spring-boot.service",
     "destination": "/tmp/"
   },
   {
