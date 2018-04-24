@@ -4,9 +4,7 @@ pipeline {
     stage('build') {
       steps {
         withMaven(jdk: '1.8', maven: '3.5.2') {
-          sh '''#!/bin/bash
-mvn package
-         '''
+          sh 'mvn package'
         }
       }
     }
@@ -21,10 +19,10 @@ mvn package
         PACKER_OBJECT_ID="56e89fa0-e748-49f4-9ff0-0d8b9e3d4057"
       }
       steps {
-        sh '''#!/bin/bash
-${PACKER_HOME}/packer validate Packer/ubunut-azure-vm.json
-${PACKER_HOME}/packer build Packer/ubunut-azure-vm.json
-       '''
+        sh 'pwd'
+        echo '${PACKER_HOME}'
+        sh '${PACKER_HOME}/packer validate Packer/ubunut-azure-vm.json'
+        sh '${PACKER_HOME}/packer build Packer/ubunut-azure-vm.json'
       }
     }
   }
