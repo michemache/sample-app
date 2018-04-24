@@ -31,21 +31,21 @@
   "provisioners": [
   {
     "type": "file",
-    "source": "{{ user `packer_workspace_key`}}/target/gs-spring-boot-0.1.0.jar",
+    "source": "target/gs-spring-boot-0.1.0.jar",
     "destination": "/tmp/gs-spring-boot.jar"
   },
   {
     "type": "file",
-    "source": "{{ user `packer_workspace_key`}}/Packer/spring-boot.service",
+    "source": "Packer/spring-boot.service",
     "destination": "/tmp/"
   },
   {
     "type": "shell",
     "execute_command": "echo 'packer' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
     "scripts": [
-        "{{ user `packer_workspace_key`}}/Packer/scripts/install_jdk8.sh",
-        "{{ user `packer_workspace_key`}}/Packer/scripts/service_enable.sh",
-        "{{ user `packer_workspace_key`}}/Packer/scripts/cleanup.sh"
+        "Packer/scripts/install_jdk8.sh",
+        "Packer/scripts/service_enable.sh",
+        "Packer/scripts/cleanup.sh"
     ]
   }]
 }
