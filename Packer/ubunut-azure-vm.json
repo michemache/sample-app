@@ -1,0 +1,50 @@
+{
+  "variables": {
+    "packer_subscription_id_key": "{{env `PACKER_SUBSCRIPTION_ID`}}",
+    "packer_client_id_key": "{{env `PACKER_CLIENT_ID`}}",
+    "packer_client_secret_key": "{{env `PACKER_CLIENT_SECRET`}}",
+    "packer_location_key": "{{env `PACKER_LOCATION`}}",
+    "packer_tenant_id_key": "{{env `PACKER_TENANT_ID`}}",
+    "packer_object_id_key": "{{env `PACKER_OBJECT_ID`}}"
+  },
+  "builders": [{
+    "type": "azure-arm",
+
+    "client_id": "{{ user `packer_client_id_key` }}",
+    "client_secret": "{{ user `packer_client_secret_key` }}",
+    "subscription_id": "{{ user `packer_subscription_id_key` }}",
+    "tenant_id": "{{ user `packer_tenant_id_key` }}",
+    "object_id": "{{ user `packer_object_id_key`}}",
+
+    "managed_image_name": "munv_spring_boot_packer_img_{{timestamp}}",
+    "managed_image_resource_group_name": "jambitiac",
+
+    "os_type": "Linux",
+    "image_publisher": "Canonical",
+    "image_offer": "UbuntuServer",
+    "image_sku": "16.04-LTS",
+
+    "location": "{{ user `packer_location_key` }}",
+    "vm_size": "Standard_A0"
+    }],
+  "provisioners": [
+  {
+    "type": "file",
+    "source": "../target/gs-spring-boot-0.1.0.jar",
+    "destination": "/tmp/gs-spring-boot.jar"
+  },
+  {
+    "type": "file",
+    "source": "spring-boot.service",
+    "destination": "/tmp/"
+  },
+  {
+    "type": "shell",
+    "execute_command": "echo 'packer' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+    "scripts": [
+        "scripts/install_jdk8.sh",
+        "scripts/service_enable.sh",
+        "scripts/cleanup.sh"
+    ]
+  }]
+}

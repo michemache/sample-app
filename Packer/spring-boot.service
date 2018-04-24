@@ -1,0 +1,10 @@
+[Unit]
+Description=Start Spring Boot App
+After=syslog.target
+
+[Service]
+ExecStart=/usr/bin/java -jar /opt/gs-spring-boot.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
